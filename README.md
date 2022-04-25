@@ -11,3 +11,5 @@ Server Side: https://github.com/Darkness-Scholar/RMedia-Server
 3. npm start
 
 App will be run on port 3000 (client) or 8888 (server)
+
+Contact: https://www.facebook.com/tlt69/
