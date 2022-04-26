@@ -9,11 +9,10 @@ function Sidebar() {
     <div className='sidebar-container'>
       <img src='https://picsum.photos/55/55' alt="" className='profile-img' />
       <div>
-        <SidebarButton title="Feed" to="/" icon={<MdSpaceDashboard/>} />
+        <SidebarButton title="Browser" to="/" icon={<MdSpaceDashboard/>} />
         <SidebarButton title="Trending" to="/trending" icon={<FaGripfire/>} />
         <SidebarButton title="Player" to="/player" icon={<FaPlay/>} />
         <SidebarButton title="Favorites" to="/favorite" icon={<MdFavorite/>} />
-        <SidebarButton title="Library" to="/library" icon={<IoLibrary/>} />
       </div>
       <SidebarButton title="SignOut" to="/" icon={<FaSignOutAlt/>} />
     </div>
