@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { MdQueue, MdPlayArrow } from 'react-icons/md'
 import { Request } from '../../youtubeAPI'
 import './Browser.css'
-import { trackList, trackListInfo, playingTrack } from "../../root/atoms"
+import { trackList, trackListInfo, playingTrack, queue } from "../../root/atoms"
 import { useRecoilState } from 'recoil'
 
 
@@ -73,6 +73,7 @@ function Browser() {
 function VideoItem({ video }) {
 
 	const [_playingTrack, $playingTrack] = useRecoilState(playingTrack)
+	const [_queue, $queue] = useRecoilState(queue)
 	const shortenTitle = (title) => {
 		if (title.length > 25) {
 			return title.substring(0, 25) + '...'
@@ -80,9 +81,24 @@ function VideoItem({ video }) {
 		return title
 	}
 
-	const setPlayingTrack = async (videoId) => {
-		const { data } = await Request.Get(`/stream?id=${videoId}&type=audio`)
+	const setPlayingTrack = async (video) => {
+		const { data } = await Request.Get(`/stream?id=${video.videoId}&type=audio`)
 		$playingTrack(data)
+	}
+
+	const addToQueue = async (video) => {
+		const { data } = await Request.Get(`/stream?id=${video.videoId}&type=audio`)
+		$queue(prev => [...prev, {
+			title: video.title, 
+			src: data, 
+			videoId: video.videoId,
+			image: video.image,
+			duration: video.duration.timestamp
+		}])
+
+		if (!_playingTrack) {
+			$playingTrack(data)
+		} 
 	}
 
 	return <div
@@ -92,8 +108,8 @@ function VideoItem({ video }) {
 		<p className='video-duration'>Duration: {video.duration.timestamp}</p>
 
 		<div className="video-fade">
-			<button onClick={() => setPlayingTrack(video.videoId)}><MdPlayArrow /></button>
-			<button onClick={() => console.log("Add Queue")}><MdQueue /></button>
+			<button onClick={() => setPlayingTrack(video)}><MdPlayArrow /></button>
+			<button onClick={() => addToQueue(video)}><MdQueue /></button>
 		</div>
 	</div>
 }

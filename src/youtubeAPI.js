@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = "http://localhost:8888/api"
+const BASE_URL = "https://dulcet-sunshine-7c07af.netlify.app/media"
 
 class HTTP {
     constructor(url) {

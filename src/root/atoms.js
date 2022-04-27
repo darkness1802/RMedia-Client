@@ -5,6 +5,16 @@ export var trackList = atom({
     default: []
 }) 
 
+export var currentIndex = atom({
+    key: 'currentIndex',
+    default: 0
+})
+
+export var queue = atom({
+    key: 'queue',
+    default: []
+})
+
 export var playingTrack = atom({
     key: 'playingTrack',
     default: null
