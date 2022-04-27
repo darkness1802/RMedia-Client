@@ -1,4 +1,4 @@
-# RMEDIA CLIENT
+# ROYAL MEDIA CLIENT
 
 Youtube Audio Full Stack App
 
