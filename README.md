@@ -1,15 +1,17 @@
 # RMEDIA CLIENT
 
-Ứng Dụng Nghe Audio Với Nguồn Dữ Liệu Dồi Dào Từ Youtube
+Youtube Audio Full Stack App
 
-Server Side: https://github.com/Darkness-Scholar/RMedia-Server
+BACK-END: >>> https://dulcet-sunshine-7c07af.netlify.app
+
+FRONT-END: >>> https://rmediavi.web.app/
 
 1. git clone https://github.com/Darkness-Scholar/RMedia-Client.git
 
-2. cd client or cd server
+2. npm install
 
 3. npm start
 
-App will be run on port 3000 (client) or 8888 (server)
+App will be run on port 3000
 
 Contact: https://www.facebook.com/tlt69/
