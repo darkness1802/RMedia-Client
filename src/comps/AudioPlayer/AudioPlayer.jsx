@@ -77,7 +77,6 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, tracks, trac
 	}, [currentIndex]);
 
 	useEffect(() => {
-		console.log(`80`);
 		return () => {
 			audioRef.current.pause();
 			clearInterval(intervalRef.current);
@@ -117,9 +116,7 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, tracks, trac
 				</div>
 				<Controls
 					isPlaying={isPlaying}
-					setIsPlaying={setIsPlaying}
-					handleNext={handleNext}
-					handlePrev={handlePrev}
+	
 				/>
 			</div>
 		</div>

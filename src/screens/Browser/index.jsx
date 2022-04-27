@@ -40,7 +40,6 @@ function Browser() {
 	const addToTrackList = (id) => {
 		Request.Get(`/stream?id=${id}&type=audio`).then(({ data }) => {
 			$trackList(prev => [...prev, data])
-			console.log(_trackList);
 		})
 	}
 
@@ -84,13 +83,24 @@ function VideoItem({ video }) {
 	const setPlayingTrack = async (video) => {
 		const { data } = await Request.Get(`/stream?id=${video.videoId}&type=audio`)
 		$playingTrack(data)
+		$queue(prev => [...prev, {
+			title: video.title, 
+			src: data,
+			author: video.author,
+			duration: video.duration.timestamp,
+			videoId: video.videoId,
+			image: video.image,
+			duration: video.duration.timestamp
+		}])
 	}
 
 	const addToQueue = async (video) => {
 		const { data } = await Request.Get(`/stream?id=${video.videoId}&type=audio`)
 		$queue(prev => [...prev, {
 			title: video.title, 
-			src: data, 
+			src: data,
+			author: video.author,
+			duration: video.duration.timestamp,
 			videoId: video.videoId,
 			image: video.image,
 			duration: video.duration.timestamp

@@ -18,7 +18,7 @@ function AlbumInfo({tracks}) {
     <p>{tracks? shortenTitle(tracks.author.name) : "Unknown" }</p>
     </div>
     <div className="albumRelease">
-      <p>Duration: {tracks? shortenTitle(tracks.duration.timestamp) : "Unknown" }</p>
+      <p>Duration: {tracks? shortenTitle(tracks.duration) : "Unknown" }</p>
     </div>
   </div>
   

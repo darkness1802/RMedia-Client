@@ -25,13 +25,15 @@ function Home() {
   const handleNext = () => {
     
 		if (_currentIndex < _queue.length - 1) {
-      console.log("currentIndex + 1")
+      console.log("NEXT")
       $playingTrack(_queue[_currentIndex + 1].src)
-			$currentIndex(prev => prev + 1)
-		} else $currentIndex(0);
+			$currentIndex(currentIndex + 1)
+		} else {
+      console.log("REPEAT")
+      $playingTrack(_queue[0].src)
+      $currentIndex(0)
+    };
 	}
-
-  console.log(_queue);
 
   return <BrowserRouter>
     <div className='home-body'>
@@ -46,6 +48,7 @@ function Home() {
         <AudioPlayer style={{ display: "none" }}
           autoPlay
           src={_playingTrack}
+          onPlayError={e => handleNext()}
           onPlay={e => console.log("onPlay")}
           onEnded={e => handleNext()}
         />
